@@ -1,0 +1,21 @@
+@import "../../../styles/variables";
+
+.selectionsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  > div {
+    margin: 0.75rem 0;
+
+    > div {
+      border-radius: 0.75rem;
+    }
+  }
+}
+
+.confirmationButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}

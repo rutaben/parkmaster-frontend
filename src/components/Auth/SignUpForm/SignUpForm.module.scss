@@ -1,0 +1,39 @@
+@import "../../../styles/variables";
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+span {
+  color: $color-accent-light;
+}
+
+.mainInputs {
+  display: flex;
+  flex-direction: column;
+
+  > div {
+    margin: 1.5rem 0 0;
+  }
+
+  > button {
+    margin-top: 2rem;
+  }
+}
+
+hr {
+  flex-shrink: 0;
+  border-width: 0 0 thin;
+  border-style: solid;
+  opacity: 1;
+  margin-top: 1.875rem;
+  margin-bottom: 1.25rem;
+  color: $color-light-grey;
+}
+
+.link {
+  display: block;
+  text-align: center;
+  color: $color-accent-light;
+}

@@ -1,0 +1,17 @@
+$breakpoints: (
+  xs: 30rem,
+  s: 37.5rem,
+  sm: 52.5rem,
+  m: 60rem,
+  l: 80rem,
+  xl: 90rem,
+  xxl: 100rem,
+);
+
+@mixin bp($point) {
+  $width: map-get($breakpoints, $point);
+
+  @media (min-width: $width) {
+    @content;
+  }
+}

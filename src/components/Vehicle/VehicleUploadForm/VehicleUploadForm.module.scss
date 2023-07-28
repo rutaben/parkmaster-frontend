@@ -1,0 +1,80 @@
+@import "../../../styles//variables";
+
+.fileField {
+  background-color: $color-grey-almost-transparent;
+  border-radius: 0.5rem;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  text-align: left;
+  overflow: hidden;
+  display: flex;
+  outline: none;
+  padding-top: 1.25rem;
+
+  input {
+    display: none;
+  }
+
+  .labelContainer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.625rem;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.7;
+    }
+
+    .label {
+      padding: 0.75rem;
+      padding-bottom: 1.5rem;
+      text-align: center;
+
+      .uploadFileIcon {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.625rem;
+
+        > svg {
+          font-size: 2.5rem;
+          color: $color-accent;
+        }
+      }
+
+      h5 {
+        margin: 1rem 0 1rem;
+        font-weight: 500;
+        font-size: 1rem;
+        color: $color-main;
+      }
+
+      p {
+        margin: 0;
+        line-height: 1.57143;
+        font-size: 0.875rem;
+        font-weight: 300;
+        color: $color-grey;
+      }
+    }
+  }
+}
+
+.selectedFileName {
+  margin-top: 1rem;
+  padding: 0 0.5rem;
+}
+
+.errorMessage {
+  margin-top: 1rem;
+  color: $color-danger;
+  padding: 0 0.5rem;
+}
+
+.uploadButtonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}

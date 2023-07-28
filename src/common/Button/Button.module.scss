@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.button {
+  border-radius: 0.75rem;
+  background: $color-accent;
+  height: 3rem;
+  padding: 0 2rem;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: $foreground-color;
+
+  &:hover {
+    background-color: $color-accent;
+  }
+}
+
+.disabledButton {
+  background: $color-light-grey;
+}

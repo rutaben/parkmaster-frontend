@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+
+.form {
+  width: 50%;
+  padding: 2rem;
+  background-color: $foreground-color;
+  border-radius: 1rem;
+  box-shadow: 0.625rem 2.5rem 2.5rem -1.25 $box-shadow-darker;
+}

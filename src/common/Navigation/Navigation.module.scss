@@ -1,0 +1,75 @@
+@import "../../styles/breakpoints";
+@import "../../styles/variables";
+
+.navigationContainer {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: transparent;
+  z-index: 20;
+
+  .navigation {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    justify-content: space-between;
+    height: 3.25;
+
+    @include bp(m) {
+      padding: 1.5rem 4rem;
+      padding-left: 2.5rem;
+    }
+
+    .logoContainer {
+      display: flex;
+      align-items: center;
+
+      &.searchVisible {
+        display: none;
+      }
+
+      @include bp(m) {
+        display: block;
+        width: 60%;
+
+        &.searchVisible {
+          display: block;
+        }
+      }
+
+      .logoText {
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: $color-accent-light;
+
+        svg {
+          font-size: 1.875rem;
+          vertical-align: bottom;
+          margin-right: 0.25rem;
+        }
+      }
+    }
+
+    .navigationItems {
+      display: flex;
+      justify-content: flex-end;
+
+      @include bp(m) {
+        width: 40%;
+      }
+    }
+
+    .userBox {
+      display: flex;
+
+      .userIconButton {
+        padding: 0 !important;
+
+        > div {
+          background-color: transparent;
+          color: $color-accent-light;
+        }
+      }
+    }
+  }
+}

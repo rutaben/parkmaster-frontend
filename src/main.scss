@@ -1,0 +1,43 @@
+@import "./styles/variables";
+
+html {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+body {
+  margin: 0;
+  font-family: "Open Sans", "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 0.875rem;
+  font-weight: 300;
+  line-height: 1.5;
+  color: $color-main;
+  background-color: $background-color;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  width: 100%;
+  flex: 1 1 0;
+}
+
+a {
+  text-decoration: none;
+  color: $color-main;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

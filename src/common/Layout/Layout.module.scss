@@ -1,0 +1,10 @@
+@import "../../styles/breakpoints";
+
+.layoutContainer {
+  width: 100vw;
+
+  .contentContainer {
+    width: calc(100vw - 17rem);
+    margin-left: 17rem;
+  }
+}
