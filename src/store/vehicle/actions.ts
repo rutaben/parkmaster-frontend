@@ -7,7 +7,6 @@ export const fetchVehicles = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get("/vehicles");
-      console.log(response);
       return response.data as Vehicle[];
     } catch (err: any) {
       const errorMessage = err.response?.data?.message ?? "Unknown error";

@@ -9,7 +9,7 @@ export type VehicleStateType = {
   vehiclesError: HttpError | string | null;
   vehicleUploadLoading: boolean;
   vehicleUploadError: HttpError | string | null;
-  uploadedVehicleVehicle: Vehicle | null;
+  uploadedVehicle: Vehicle | null;
 };
 
 export const initialState: VehicleStateType = {
@@ -18,7 +18,7 @@ export const initialState: VehicleStateType = {
   vehiclesError: null,
   vehicleUploadLoading: false,
   vehicleUploadError: null,
-  uploadedVehicleVehicle: null,
+  uploadedVehicle: null,
 };
 
 const vehicleSlice = createSlice({
@@ -28,7 +28,7 @@ const vehicleSlice = createSlice({
     resetVehicleUploadStore: (state) => {
       state.vehicleUploadLoading = false;
       state.vehicleUploadError = null;
-      state.uploadedVehicleVehicle = null;
+      state.uploadedVehicle = null;
     },
     resetVehicleStore: (state) => {
       state.vehicles = null;
@@ -36,7 +36,7 @@ const vehicleSlice = createSlice({
       state.vehiclesError = null;
       state.vehicleUploadLoading = false;
       state.vehicleUploadError = null;
-      state.uploadedVehicleVehicle = null;
+      state.uploadedVehicle = null;
     },
   },
   extraReducers: (builder) => {
@@ -61,7 +61,7 @@ const vehicleSlice = createSlice({
         state.vehicleUploadLoading = true;
       })
       .addCase(uploadVehicle.fulfilled, (state, action: PayloadAction<any>) => {
-        state.uploadedVehicleVehicle = action.payload;
+        state.uploadedVehicle = action.payload;
         state.vehicleUploadLoading = false;
         state.vehicleUploadError = null;
       })

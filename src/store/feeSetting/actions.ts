@@ -25,8 +25,6 @@ export const updateFeeSetting = createAsyncThunk(
   async (params: UpdateFeeSettingsProps, thunkAPI) => {
     const { id, feeRate } = params;
 
-    console.log(feeRate);
-
     try {
       const response = await axios.patch(`/fee-settings/${id}`, { feeRate });
       return response.data as FeeSetting;
