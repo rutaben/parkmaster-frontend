@@ -11,6 +11,8 @@ import { AppDispatch } from "../../Settings/FeeSettingForm/FeeSettingForm";
 import { signIn } from "../../../store/auth/actions";
 import { isValidEmail } from "../../../utilities/validation";
 import { Input, useInputValidation } from "../../../hooks/useInputValidation";
+import { statusToast } from "../../../utilities/statusToast";
+import { transformError } from "../../../utilities/errorTransform";
 
 const SignInForm = () => {
   const navigate = useNavigate();
@@ -22,12 +24,13 @@ const SignInForm = () => {
   useEffect(() => {
     if (signInError) {
       dispatch(resetSignInError());
+      statusToast(transformError("Could not sign in"));
     }
   }, [signInError, dispatch]);
 
   useEffect(() => {
     if (isAuthenticated) {
-      return navigate(routes.vehicles);
+      return navigate(routes.vehicles.list);
     }
   }, [isAuthenticated, navigate]);
 

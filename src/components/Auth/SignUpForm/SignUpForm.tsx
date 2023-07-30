@@ -14,16 +14,29 @@ import {
   isValidEmail,
 } from "../../../utilities/validation";
 import { Input, useInputValidation } from "../../../hooks/useInputValidation";
+import { statusToast } from "../../../utilities/statusToast";
+import { transformError } from "../../../utilities/errorTransform";
 
 const SignUpForm = () => {
-  const { signUpError } = useSelector(
+  const { signUpError, signUpSuccess } = useSelector(
     (state: { auth: AuthStateType }) => state.auth
   );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
+    if (signUpSuccess) {
+      statusToast(
+        "Sign Up was successful. Please Sign In with your credentials"
+      );
+    }
+  }, [signUpSuccess, dispatch]);
+
+  useEffect(() => {
     if (signUpError) {
       dispatch(resetSignUpError());
+
+      // TODO: set up service to handle request status with error messages (and provide exceptions messages in BE)
+      statusToast(transformError("Sign Up was unsuccessful"), true);
     }
   }, [signUpError, dispatch]);
 
