@@ -21,6 +21,8 @@ import { VehicleType } from "../../../domain/Vehicle";
 import { Weekday } from "../../../domain/Weekday";
 import { FeeSetting } from "../../../domain/FeeSetting";
 import { Input, useInputValidation } from "../../../hooks/useInputValidation";
+import { statusToast } from "../../../utilities/statusToast";
+import { transformError } from "../../../utilities/errorTransform";
 
 export type AppDispatch = typeof store.dispatch;
 
@@ -96,7 +98,7 @@ const FeeSettingForm = () => {
     setFeeSetting();
   }, [setFeeSetting]);
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (!selectedFeeSetting || (selectedFeeSetting && !selectedFeeSetting.id)) {
@@ -105,15 +107,20 @@ const FeeSettingForm = () => {
 
     const hasErrors = inputs.some((input) => !!input.error);
 
-    if (!hasErrors) {
+    if (!hasErrors && inputs[1].value.length > 0) {
       const newFeeRate = {
         id: selectedFeeSetting && selectedFeeSetting.id,
         feeRate: inputs[1].value,
       };
 
-      dispatch(updateFeeSetting(newFeeRate));
-      dispatch(fetchFeeSettings());
-      resetInputValue("newFeeRate");
+      try {
+        await dispatch(updateFeeSetting(newFeeRate));
+        statusToast("Fee rate was successfully updated 🚙");
+        setRate(newFeeRate.feeRate);
+        resetInputValue("newFeeRate");
+      } catch (error: any) {
+        statusToast(transformError(`${error.toString()} 🚗`));
+      }
     }
   };
 

@@ -1,7 +1,5 @@
-export const transformError = (error: string) => {
-  if (error === "VALIDATION.FILE_TOO_LARGE") {
-    return "Error: File is too large";
-  }
+// Utility with a potential to translate/ transform error exceptions from server side to more user friendly explanations
 
+export const transformError = (error: string) => {
   return `Error: ${error}`;
 };

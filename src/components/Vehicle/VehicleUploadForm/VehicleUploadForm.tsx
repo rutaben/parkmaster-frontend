@@ -14,6 +14,7 @@ import {
 import { routes } from "../../../routing/routes";
 import ProgressIndicator from "../../../common/ProgressIndicator/ProgressIndicator";
 import { transformError } from "../../../utilities/errorTransform";
+import { statusToast } from "../../../utilities/statusToast";
 
 const VehicleUploadForm = () => {
   const navigate = useNavigate();
@@ -21,19 +22,22 @@ const VehicleUploadForm = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
 
-  const { vehicleUploadLoading, vehicleUploadError, uploadedVehicleVehicle } =
+  const { vehicleUploadLoading, vehicleUploadError, uploadedVehicle } =
     useSelector((state: { vehicle: VehicleStateType }) => state.vehicle);
 
   useEffect(() => {
-    if (uploadedVehicleVehicle) {
-      navigate(routes.vehicles.list);
+    if (uploadedVehicle) {
+      statusToast("Vehicle was successfully uploaded 🚙");
       dispatch(resetVehicleUploadStore());
+      navigate(routes.vehicles.list);
     }
-  }, [uploadedVehicleVehicle, navigate, dispatch]);
+  }, [uploadedVehicle, navigate, dispatch]);
 
   useEffect(() => {
     if (vehicleUploadError) {
+      statusToast(transformError(`${vehicleUploadError.toString()} 🚗`), true);
       setSelectedFile(null);
+      dispatch(resetVehicleUploadStore());
     }
   }, [vehicleUploadError, dispatch]);
 
@@ -82,7 +86,7 @@ const VehicleUploadForm = () => {
             </div>
             <h5>Click to browse</h5>
             <p>Maximum file size is 3MB</p>
-            <p>Accepted file extensions: .jpeg,.jpg,.png</p>
+            <p>Accepted files: .jpeg,.jpg,.png</p>
           </div>
         </div>
       </div>
@@ -93,11 +97,6 @@ const VehicleUploadForm = () => {
         </div>
       )}
       {vehicleUploadLoading && <ProgressIndicator />}
-      {!!vehicleUploadError && (
-        <div className={styles.errorMessage}>
-          {transformError(vehicleUploadError.toString())}
-        </div>
-      )}
 
       <div className={styles.uploadButtonContainer}>
         <Button
