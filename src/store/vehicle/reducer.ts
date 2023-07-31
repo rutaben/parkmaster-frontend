@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HttpError } from "../../services/Axios/axios-instance";
 import { Vehicle } from "../../domain/Vehicle";
 import { fetchVehicles, uploadVehicle } from "./actions";
 
 export type VehicleStateType = {
   vehicles: Vehicle[] | null;
   vehiclesLoading: boolean;
-  vehiclesError: HttpError | string | null;
+  vehiclesError: Array<{ [key: string]: string }> | string | null;
   vehicleUploadLoading: boolean;
-  vehicleUploadError: HttpError | string | null;
+  vehicleUploadError: Array<{ [key: string]: string }> | string | null;
   uploadedVehicle: Vehicle | null;
 };
 

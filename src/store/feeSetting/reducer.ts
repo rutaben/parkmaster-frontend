@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HttpError } from "../../services/Axios/axios-instance";
 import { FeeSetting } from "../../domain/FeeSetting";
 import { fetchFeeSettings, updateFeeSetting } from "./actions";
 
 export type FeeSettingStateType = {
   feeSettings: FeeSetting[] | null;
   feeSettingsLoading: boolean;
-  feeSettingsError: HttpError | string | null;
+  feeSettingsError: Array<{ [key: string]: string }> | string | null;
   feeSettingLoading: boolean;
-  feeSettingError: HttpError | string | null;
+  feeSettingError: Array<{ [key: string]: string }> | string | null;
   updatedFee: any;
 };
 

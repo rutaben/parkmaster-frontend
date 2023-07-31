@@ -18,6 +18,7 @@ import { statusToast } from "../../../utilities/statusToast";
 
 const VehicleUploadForm = () => {
   const navigate = useNavigate();
+  // Reference to the file input element
   const uploadInputRef = useRef<HTMLInputElement | null>(null);
   const dispatch = useDispatch<AppDispatch>();
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -25,6 +26,7 @@ const VehicleUploadForm = () => {
   const { vehicleUploadLoading, vehicleUploadError, uploadedVehicle } =
     useSelector((state: { vehicle: VehicleStateType }) => state.vehicle);
 
+  // If upload is successful, displays success toast, resets the store and redirects back to all vehicles list
   useEffect(() => {
     if (uploadedVehicle) {
       statusToast("Vehicle was successfully uploaded 🚙");
@@ -33,6 +35,7 @@ const VehicleUploadForm = () => {
     }
   }, [uploadedVehicle, navigate, dispatch]);
 
+  // If upload is successful, displays error toast and resets the store so that user can reupload the picture again
   useEffect(() => {
     if (vehicleUploadError) {
       statusToast(transformError(`${vehicleUploadError.toString()} 🚗`), true);
@@ -41,11 +44,13 @@ const VehicleUploadForm = () => {
     }
   }, [vehicleUploadError, dispatch]);
 
+  // Tries to upload image for vehicle analysis and updates the vehicles list
   const handleVehicleUpload = (file: File) => {
     dispatch(uploadVehicle(file));
     dispatch(fetchVehicles());
   };
 
+  // Sets the selected file as local state and resets upload store so that file could be uploaded without refreshing the page
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
@@ -54,6 +59,7 @@ const VehicleUploadForm = () => {
     }
   };
 
+  // Triggers the file input element's click event (enables clicking on select file through an external element)
   const handleUploadClick = () => {
     if (uploadInputRef.current) {
       uploadInputRef.current.click();
@@ -63,6 +69,7 @@ const VehicleUploadForm = () => {
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
 
+    // Tries to submit file and resets selected file so that other file could be selected if needed
     if (selectedFile) {
       handleVehicleUpload(selectedFile);
       setSelectedFile(null);

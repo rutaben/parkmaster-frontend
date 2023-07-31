@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
 
+// Message toast configurations depending on toast meaning
 export const statusToast = (message: string, error?: boolean) => {
   if (error) {
     toast.error(message, {

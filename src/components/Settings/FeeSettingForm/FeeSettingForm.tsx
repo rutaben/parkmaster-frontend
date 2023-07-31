@@ -43,6 +43,7 @@ const FeeSettingForm = () => {
     dispatch(fetchFeeSettings());
   }, [dispatch]);
 
+  // Value of current fee rate is set by local state as it is triggered by VehicleType select field change
   const initialInputs: Input[] = [
     {
       name: "feeRate",
@@ -66,9 +67,11 @@ const FeeSettingForm = () => {
     },
   ];
 
+  // A hook used to validate and reset input
   const { inputs, handleOnInputChange, resetInputValue } =
     useInputValidation(initialInputs);
 
+  // Callback to set the fee setting based on vehicle type and weekday selection
   const setFeeSetting = useCallback(() => {
     if (!feeSettings) {
       return;
@@ -85,6 +88,7 @@ const FeeSettingForm = () => {
     }
   }, [feeSettings, vehicleType, weekday]);
 
+  // Event handlers for the Select fields
   const handleVehicleTypeChange = (event: SelectChangeEvent) => {
     setVehicleType(event.target.value);
   };
@@ -94,6 +98,7 @@ const FeeSettingForm = () => {
     setFeeSetting();
   };
 
+  // Fetches the initial fee setting when the vehicle type or weekday changes
   useEffect(() => {
     setFeeSetting();
   }, [setFeeSetting]);
@@ -107,6 +112,7 @@ const FeeSettingForm = () => {
 
     const hasErrors = inputs.some((input) => !!input.error);
 
+    // Only tries to submit updates fee setting if input doesn't have errors and has value
     if (!hasErrors && inputs[1].value.length > 0) {
       const newFeeRate = {
         id: selectedFeeSetting && selectedFeeSetting.id,

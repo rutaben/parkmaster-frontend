@@ -17,6 +17,7 @@ import { GridColDef } from "@mui/x-data-grid";
 
 export type AppDispatch = typeof store.dispatch;
 
+// Represents the column configuration for the vehicles table
 const columns: GridColDef[] = [
   {
     field: "plateNumber",
@@ -54,6 +55,7 @@ const columns: GridColDef[] = [
   },
 ];
 
+// Renders the Vehicles page component which displays a table of vehicles data
 export const Vehicles = (): ReactElement => {
   const { vehicles, vehiclesLoading } = useSelector(
     (state: { vehicle: VehicleStateType }) => state.vehicle
@@ -65,10 +67,7 @@ export const Vehicles = (): ReactElement => {
     dispatch(fetchVehicles());
   }, [dispatch]);
 
-  useEffect(() => {
-    dispatch(resetVehicleUploadStore());
-  }, [dispatch]);
-
+  // Transforms date and time string to a more usual format
   const formatDateTime = (dateAndTime: Date) => {
     const date = new Date(dateAndTime);
     const formattedDateTime = format(date, "yy-MM-dd hh:mm a");
@@ -76,6 +75,7 @@ export const Vehicles = (): ReactElement => {
     return formattedDateTime;
   };
 
+  // Returns a vehicle type name string depending on enum
   const getFormattedVehicleType = (vehicleType: VehicleType) => {
     if (vehicleType === VehicleType.BusOrTruck) {
       return "Bus/Truck";
@@ -102,10 +102,12 @@ export const Vehicles = (): ReactElement => {
       }))
     : [];
 
+  // Path and title for a top button
   const topActions = [
     { path: routes.vehicles.upload, title: "Upload vehicle image" },
   ];
 
+  // Loader present while vehicles list is still loading
   if (vehiclesLoading) {
     return <Loader isLoading />;
   }

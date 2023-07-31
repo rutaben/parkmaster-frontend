@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { FormEvent, useEffect } from "react";
 import styles from "./SignInForm.module.scss";
 import { TextField } from "@mui/material";
 import Form from "../../../common/Form/Form";
@@ -21,12 +21,16 @@ const SignInForm = () => {
   );
   const dispatch = useDispatch<AppDispatch>();
 
+  // Error on unsuccessful Sign In is set up to null for better UX
+
   useEffect(() => {
     if (signInError) {
       dispatch(resetSignInError());
       statusToast(transformError("Could not sign in"));
     }
   }, [signInError, dispatch]);
+
+  // Default navigation after successful login
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -62,6 +66,7 @@ const SignInForm = () => {
     },
   ];
 
+  // Custom hook to validate inputs
   const { inputs, handleOnInputChange } = useInputValidation(initialInputs);
 
   const handleSubmit = (event: FormEvent) => {

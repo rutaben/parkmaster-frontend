@@ -15,6 +15,8 @@ const SIDEBAR_ITEMS = [
   { title: "Settings", icon: <SettingsIcon />, link: "/settings" },
 ];
 
+// Returns Sidebar with Navigation links (Desktop only)
+
 const Sidebar = () => {
   return (
     <>

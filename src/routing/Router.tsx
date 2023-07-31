@@ -6,6 +6,7 @@ import Layout from "../common/Layout/Layout";
 import { useSelector } from "react-redux";
 import { AuthStateType } from "../store/auth/reducer";
 
+// Lazy loading to reduce initial loading time
 const Vehicles = lazy(() => import("../pages/Vehicle/Vehicles/Vehicles"));
 const VehicleUpload = lazy(
   () => import("../pages/Vehicle/VehicleUpload/VehicleUpload")
@@ -15,7 +16,6 @@ const SignIn = lazy(() => import("../pages/SignIn/SignIn"));
 const SignUp = lazy(() => import("../pages/Auth/SignUp/SignUp"));
 
 // Different available routes and different default routes depending on user authentification status
-
 const Router = () => {
   const isAuthenticated = useSelector(
     (state: { auth: AuthStateType }) => state.auth.isAuthenticated

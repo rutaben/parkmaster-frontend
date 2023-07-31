@@ -23,6 +23,7 @@ const SignUpForm = () => {
   );
   const dispatch = useDispatch<AppDispatch>();
 
+  // Currently only login generates userToken therefore user is asked to Sign In separately
   useEffect(() => {
     if (signUpSuccess) {
       statusToast(
@@ -31,6 +32,7 @@ const SignUpForm = () => {
     }
   }, [signUpSuccess, dispatch]);
 
+  // Resets error for better UX and provides an explanation message
   useEffect(() => {
     if (signUpError) {
       dispatch(resetSignUpError());

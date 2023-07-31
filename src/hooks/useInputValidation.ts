@@ -10,6 +10,7 @@ export type Input = {
   disabled?: boolean;
 };
 
+// A custom hook for handling input validation in a form
 export const useInputValidation = (initialInputs: Input[]) => {
   const [inputs, setInputs] = useState<Input[]>(
     initialInputs.map((input) => ({ ...input, error: "" }))
@@ -30,6 +31,7 @@ export const useInputValidation = (initialInputs: Input[]) => {
               validate(value)
             );
 
+            // Finds the first non-empty error message and set it as the input's error
             newInput.error = errors.find((error) => !!error) || "";
           }
 
@@ -41,6 +43,7 @@ export const useInputValidation = (initialInputs: Input[]) => {
     });
   };
 
+  // Resets the value of an input field to an empty string
   const resetInputValue = (name: string) => {
     setInputs((prevInputs) =>
       prevInputs.map((prevInput) =>

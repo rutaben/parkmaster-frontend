@@ -1,14 +1,13 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { HttpError } from "../../services/Axios/axios-instance";
 import { signIn, signUp } from "./actions";
 
 export type AuthStateType = {
   userToken: string | null;
   signInLoading: boolean;
-  signInError: HttpError | string | null;
+  signInError: Array<{ [key: string]: string }> | string | null;
   signUpLoading: boolean;
   signUpSuccess: boolean;
-  signUpError: HttpError | string | null;
+  signUpError: Array<{ [key: string]: string }> | string | null;
   isAuthenticated: boolean;
 };
 
@@ -37,6 +36,7 @@ const authSlice = createSlice({
       state.signUpError = null;
     },
   },
+  // Reducers to handle async actions from actions fil
   extraReducers: (builder) => {
     builder
       .addCase(signIn.pending, (state) => {
@@ -69,6 +69,7 @@ const authSlice = createSlice({
   },
 });
 
+// Action creators export
 export const { signOut, resetSignInError, resetSignUpError } =
   authSlice.actions;
 
