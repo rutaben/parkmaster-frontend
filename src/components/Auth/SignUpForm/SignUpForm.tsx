@@ -14,31 +14,17 @@ import {
   isValidEmail,
 } from "../../../utilities/validation";
 import { Input, useInputValidation } from "../../../hooks/useInputValidation";
-import { statusToast } from "../../../utilities/statusToast";
-import { transformError } from "../../../utilities/errorTransform";
 
 const SignUpForm = () => {
-  const { signUpError, signUpSuccess } = useSelector(
+  const { signUpError } = useSelector(
     (state: { auth: AuthStateType }) => state.auth
   );
   const dispatch = useDispatch<AppDispatch>();
 
-  // Currently only login generates userToken therefore user is asked to Sign In separately
-  useEffect(() => {
-    if (signUpSuccess) {
-      statusToast(
-        "Sign Up was successful. Please Sign In with your credentials"
-      );
-    }
-  }, [signUpSuccess, dispatch]);
-
-  // Resets error for better UX and provides an explanation message
+  // Resets error for better UX
   useEffect(() => {
     if (signUpError) {
       dispatch(resetSignUpError());
-
-      // TODO: set up service to handle request status with error messages (and provide exceptions messages in BE)
-      statusToast(transformError("Sign Up was unsuccessful"), true);
     }
   }, [signUpError, dispatch]);
 

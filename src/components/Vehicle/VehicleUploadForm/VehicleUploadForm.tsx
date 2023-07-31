@@ -13,8 +13,6 @@ import {
 } from "../../../store/vehicle/reducer";
 import { routes } from "../../../routing/routes";
 import ProgressIndicator from "../../../common/ProgressIndicator/ProgressIndicator";
-import { transformError } from "../../../utilities/errorTransform";
-import { statusToast } from "../../../utilities/statusToast";
 
 const VehicleUploadForm = () => {
   const navigate = useNavigate();
@@ -26,19 +24,17 @@ const VehicleUploadForm = () => {
   const { vehicleUploadLoading, vehicleUploadError, uploadedVehicle } =
     useSelector((state: { vehicle: VehicleStateType }) => state.vehicle);
 
-  // If upload is successful, displays success toast, resets the store and redirects back to all vehicles list
+  // If upload is successful, resets the store and redirects back to all vehicles list
   useEffect(() => {
     if (uploadedVehicle) {
-      statusToast("Vehicle was successfully uploaded 🚙");
       dispatch(resetVehicleUploadStore());
       navigate(routes.vehicles.list);
     }
   }, [uploadedVehicle, navigate, dispatch]);
 
-  // If upload is successful, displays error toast and resets the store so that user can reupload the picture again
+  // If upload is unsuccessful, resets the store so that user can reupload the picture again
   useEffect(() => {
     if (vehicleUploadError) {
-      statusToast(transformError(`${vehicleUploadError.toString()} 🚗`), true);
       setSelectedFile(null);
       dispatch(resetVehicleUploadStore());
     }
