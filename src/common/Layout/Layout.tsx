@@ -8,6 +8,7 @@ export type Props = {
   children: ReactNode;
 };
 
+// Returns styled layout depending on auth status
 const Layout = ({ isAuthenticated, children }: Props) => {
   const getLayoutByAuthStatus = (isAuthenticated: boolean) => {
     if (isAuthenticated) {

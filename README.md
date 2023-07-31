@@ -21,6 +21,7 @@ Parkmaster is a straightforward React application designed to recognize vehicle 
 - Recognizes vehicle data such as number plates and vehicle type and logs into database
 - Enables manual file upload
 - Enables parking fee rate changes
+- Desktop UI design (responsive design is coming)
 
 ## Getting Started
 
@@ -39,11 +40,11 @@ Run the following command to install project dependencies:
 
 ## Usage
 
-2. Run the application using the following command:
+1. Run the application using the following command:
 
 - npm run dev
 
-3. Register user and sign in separately (friendlier UX is coming on iterations)
+2. Register user and sign in separately (friendlier UX is coming)
 
 ## Contact
 

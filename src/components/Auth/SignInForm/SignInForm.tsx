@@ -20,7 +20,6 @@ const SignInForm = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   // Error on unsuccessful Sign In is set up to null for better UX
-
   useEffect(() => {
     if (signInError) {
       dispatch(resetSignInError());
@@ -28,7 +27,6 @@ const SignInForm = () => {
   }, [signInError, dispatch]);
 
   // Default navigation after successful login
-
   useEffect(() => {
     if (isAuthenticated) {
       return navigate(routes.vehicles.list);

@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import styles from "./Navigation.module.scss";
-import cx from "classnames";
 import { Avatar, IconButton, Menu, MenuItem } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../pages/Vehicle/Vehicles/Vehicles";
@@ -10,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { resetFeeSettingStore } from "../../store/feeSetting/reducer";
 import { resetVehicleStore } from "../../store/vehicle/reducer";
 
+// Returns a basic styled navigation component
 const Navigation = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const Navigation = () => {
         </div>
 
         <div className={styles.navigationItems}>
-          <div className={styles.userBox}>
+          <div className={styles.userButton}>
             <IconButton
               onClick={handleOpenUserMenu}
               className={styles.userIconButton}

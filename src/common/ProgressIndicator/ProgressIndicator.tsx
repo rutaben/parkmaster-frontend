@@ -6,7 +6,6 @@ const ProgressIndicator = () => {
   const [progress, setProgress] = useState(0);
 
 // Returns a progress bar with simulated loading
-
   useEffect(() => {
     const timer = setInterval(() => {
       setProgress((oldProgress) => {

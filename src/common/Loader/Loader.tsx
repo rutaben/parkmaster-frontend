@@ -11,6 +11,7 @@ const override: CSSProperties = {
   margin: "0 auto",
 };
 
+// Returns a styled loader
 const Loader = ({ isLoading }: LoaderProps) => {
   return (
     <div className={styles.loader}>

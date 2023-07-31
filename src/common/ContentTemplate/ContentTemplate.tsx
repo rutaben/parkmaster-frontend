@@ -9,8 +9,7 @@ export type ContentTemplateProps = {
   children: ReactNode;
 };
 
-// Template for authenticated user content
-
+// Returns a template for authenticated user content
 const ContentTemplate = ({
   title,
   children,

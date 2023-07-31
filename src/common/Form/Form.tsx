@@ -6,6 +6,7 @@ type FormProps = {
   onSubmit: (event: FormEvent) => void;
 };
 
+// Returns a styled form wrapper
 const Form = ({ children, onSubmit }: FormProps) => {
   return (
     <form

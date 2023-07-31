@@ -7,7 +7,6 @@ export type AuthTemplateProps = {
 };
 
 // Creates a template for content and navigation depending on auth status
-
 const AuthTemplate = ({ children }: AuthTemplateProps) => {
   return (
     <div className={styles.signInContainer}>

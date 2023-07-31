@@ -14,6 +14,7 @@ export type Props = {
   disableRipple?: boolean;
 };
 
+// Returns a custom styled button depending on a props passed
 const Button = ({
   children,
   className,
