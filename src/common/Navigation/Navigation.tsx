@@ -14,8 +14,6 @@ const Navigation = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
-  const [searchInputVisible, setSearchInputVisible] = useState<boolean>(false);
-  const searchContainerRef = useRef<HTMLDivElement>(null);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -35,11 +33,7 @@ const Navigation = () => {
   return (
     <div className={styles.navigationContainer}>
       <div className={styles.navigation}>
-        <div
-          className={cx(styles.logoContainer, {
-            [styles.searchVisible]: searchInputVisible,
-          })}
-        >
+        <div className={styles.logoContainer}>
           <span className={styles.logoText}>parkmaster</span>
         </div>
 

@@ -14,27 +14,9 @@
     justify-content: space-between;
     height: 3.25;
 
-    @include bp(m) {
-      padding: 1.5rem 4rem;
-      padding-left: 2.5rem;
-    }
-
     .logoContainer {
       display: flex;
       align-items: center;
-
-      &.searchVisible {
-        display: none;
-      }
-
-      @include bp(m) {
-        display: block;
-        width: 60%;
-
-        &.searchVisible {
-          display: block;
-        }
-      }
 
       .logoText {
         font-size: 1.75rem;
@@ -52,10 +34,6 @@
     .navigationItems {
       display: flex;
       justify-content: flex-end;
-
-      @include bp(m) {
-        width: 40%;
-      }
     }
 
     .userBox {
