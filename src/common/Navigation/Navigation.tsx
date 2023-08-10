@@ -6,6 +6,7 @@ import { AppDispatch } from "../../pages/Vehicle/Vehicles/Vehicles";
 import { signOut } from "../../store/auth/reducer";
 import { routes } from "../../routing/routes";
 import { useNavigate } from "react-router-dom";
+import cx from "classnames";
 import { resetFeeSettingStore } from "../../store/feeSetting/reducer";
 import { resetVehicleStore } from "../../store/vehicle/reducer";
 
@@ -14,6 +15,7 @@ const Navigation = () => {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+  const [colorChange, setColorchange] = useState(false);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -23,6 +25,15 @@ const Navigation = () => {
     setAnchorElUser(null);
   };
 
+  const changeNavbarColor = () => {
+    if (window.scrollY >= 40) {
+      setColorchange(true);
+    } else {
+      setColorchange(false);
+    }
+  };
+  window.addEventListener("scroll", changeNavbarColor);
+
   const handleSignOut = () => {
     dispatch(signOut());
     dispatch(resetFeeSettingStore());
@@ -31,7 +42,11 @@ const Navigation = () => {
   };
 
   return (
-    <div className={styles.navigationContainer}>
+    <div
+      className={cx(styles.navigationContainer, {
+        [styles.navigationScrolled]: colorChange,
+      })}
+    >
       <div className={styles.navigation}>
         <div className={styles.logoContainer}>
           <span className={styles.logoText}>parkmaster</span>

@@ -1,18 +1,31 @@
-@import "../../styles/variables";
+@import "../../styles/variables.module.scss";
+@import "../../styles/breakpoints.module.scss";
 
 .navigationContainer {
-  width: 100%;
+  width: 100vw;
   position: fixed;
   top: 0;
   background-color: transparent;
   z-index: 20;
 
+  &.navigationScrolled {
+    background-color: $foreground-color;
+  }
+
   .navigation {
     display: flex;
     align-items: center;
     padding: 1.5rem 2rem;
-    justify-content: space-between;
+    justify-content: center;
     height: 3.25;
+
+    @include sm-breakpoint {
+      padding: 1.5rem 3rem;
+    }
+
+    @include lg-breakpoint {
+      justify-content: space-between;
+    }
 
     .logoContainer {
       display: flex;
@@ -22,12 +35,6 @@
         font-size: 1.75rem;
         font-weight: bold;
         color: $color-accent-light;
-
-        svg {
-          font-size: 1.875rem;
-          vertical-align: bottom;
-          margin-right: 0.25rem;
-        }
       }
     }
 
@@ -38,6 +45,17 @@
 
     .userButton {
       display: flex;
+      position: absolute;
+      right: 2.5rem;
+      top: 1.5rem;
+
+      @include md-breakpoint {
+        right: 3.5rem;
+      }
+
+      @include lg-breakpoint {
+        position: unset;
+      }
 
       .userIconButton {
         padding: 0 !important;

@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/variables.module.scss";
 
 .tableContainer {
   margin-bottom: 3rem;
@@ -15,10 +15,7 @@
       > div:nth-child(2) {
         > div:nth-child(1) {
           font-size: 1rem;
-          height: 12.5rem;
-          max-width: 64rem;
           text-align: center;
-          line-height: 12.5;
         }
       }
     }

@@ -1,16 +1,34 @@
-@import "../../styles/variables";
+@import "../../styles/variables.module.scss";
+@import "../../styles/breakpoints.module.scss";
 
 .contentContainer {
-  margin: 0 4rem;
   margin-bottom: 1.5rem;
-  margin-top: 6rem;
+  margin: 7rem 1rem;
   display: flex;
   flex-direction: column;
 
+  @include xs-breakpoint {
+    margin: 7rem 1rem;
+  }
+
+  @include md-breakpoint {
+    margin: 7rem 2rem;
+  }
+
+  @include lg-breakpoint {
+    margin: 6rem 4rem;
+  }
+
   .topContainer {
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     padding-bottom: 1.5rem;
+    flex-direction: column-reverse;
+
+    @include xs-breakpoint {
+      flex-direction: row;
+      justify-content: space-between;
+    }
 
     > h2 {
       color: $color-main;
@@ -20,6 +38,11 @@
       display: flex;
       align-items: center;
       gap: 0.75rem;
+      margin-bottom: 1rem;
+
+      @include xs-breakpoint {
+        margin-bottom: 0;
+      }
     }
   }
 }

@@ -1,8 +1,15 @@
+@import "../../styles/breakpoints.module.scss";
+
 .layoutContainer {
-  width: 100vw;
+  width: calc(100vw - 4rem);
 
   .contentContainer {
-    width: calc(100vw - 17rem);
-    margin-left: 17rem;
+    width: calc(100vw - 4rem);
+    margin: 0 2rem;
+
+    @include lg-breakpoint {
+      width: calc(100vw - 18rem);
+      margin-left: 17rem;
+    }
   }
 }

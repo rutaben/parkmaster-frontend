@@ -5,10 +5,7 @@ import Table from "../../../common/Table/Table";
 import { ReactElement } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchVehicles } from "../../../store/vehicle/actions";
-import {
-  VehicleStateType,
-  resetVehicleUploadStore,
-} from "../../../store/vehicle/reducer";
+import { VehicleStateType } from "../../../store/vehicle/reducer";
 import store from "../../../store/store";
 import { VehicleType } from "../../../domain/Vehicle";
 import ContentTemplate from "../../../common/ContentTemplate/ContentTemplate";
@@ -24,34 +21,46 @@ const columns: GridColDef[] = [
     headerName: "Plate number",
     type: "string",
     width: 160,
+    flex: 1,
+    minWidth: 110,
   },
   {
     field: "vehicleType",
     headerName: "Vehicle type",
     type: "string",
     width: 160,
+    flex: 1,
+    minWidth: 120,
   },
   {
     field: "arrival",
     headerName: "Arrival",
     type: "Date",
     width: 200,
+    flex: 1,
+    minWidth: 180,
   },
   {
     field: "departure",
     headerName: "Departure",
     type: "Date",
     width: 200,
+    flex: 1,
+    minWidth: 180,
   },
   {
     field: "timeTotal",
     headerName: "Time (total)",
     width: 150,
+    flex: 1,
+    minWidth: 110,
   },
   {
     field: "feeTotal",
     headerName: "Fee (total, €)",
     width: 150,
+    flex: 1,
+    minWidth: 110,
   },
 ];
 
