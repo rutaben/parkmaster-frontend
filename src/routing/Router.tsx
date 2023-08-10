@@ -12,7 +12,7 @@ const VehicleUpload = lazy(
   () => import("../pages/Vehicle/VehicleUpload/VehicleUpload")
 );
 const FeeSettings = lazy(() => import("../pages/FeeSettings/FeeSettings"));
-const SignIn = lazy(() => import("../pages/SignIn/SignIn"));
+const SignIn = lazy(() => import("../pages/Auth/SignIn/SignIn"));
 const SignUp = lazy(() => import("../pages/Auth/SignUp/SignUp"));
 
 // Different available routes and different default routes depending on user authentification status
