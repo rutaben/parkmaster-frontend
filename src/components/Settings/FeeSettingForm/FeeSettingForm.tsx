@@ -75,14 +75,14 @@ const FeeSettingForm = () => {
       return;
     }
 
-    const selectedFeeSetting = feeSettings.find(
+    const matchedFeeSetting = feeSettings.find(
       (setting) =>
         setting.vehicleType === vehicleType && setting.weekday === weekday
     );
 
-    if (selectedFeeSetting) {
-      setRate(selectedFeeSetting.feeRate);
-      setSelectedFeeSetting(selectedFeeSetting);
+    if (matchedFeeSetting) {
+      setRate(matchedFeeSetting.feeRate);
+      setSelectedFeeSetting(matchedFeeSetting);
     }
   }, [feeSettings, vehicleType, weekday]);
 
