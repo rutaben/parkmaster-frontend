@@ -32,8 +32,10 @@ const authSlice = createSlice({
     resetSignInError: (state) => {
       state.signInError = null;
     },
-    resetSignUpError: (state) => {
+    resetSignupStore: (state) => {
+      state.signUpLoading = false;
       state.signUpError = null;
+      state.signUpSuccess = false;
     },
   },
   // Reducers to handle async actions from actions fil
@@ -70,7 +72,7 @@ const authSlice = createSlice({
 });
 
 // Action creators export
-export const { signOut, resetSignInError, resetSignUpError } =
+export const { signOut, resetSignInError, resetSignupStore } =
   authSlice.actions;
 
 export default authSlice.reducer;

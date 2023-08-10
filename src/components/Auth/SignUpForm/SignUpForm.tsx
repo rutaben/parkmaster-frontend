@@ -3,10 +3,10 @@ import styles from "./SignUpForm.module.scss";
 import { TextField } from "@mui/material";
 import Form from "../../../common/Form/Form";
 import Button from "../../../common/Button/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { routes } from "../../../routing/routes";
 import { useDispatch, useSelector } from "react-redux";
-import { AuthStateType, resetSignUpError } from "../../../store/auth/reducer";
+import { AuthStateType, resetSignupStore } from "../../../store/auth/reducer";
 import { AppDispatch } from "../../Settings/FeeSettingForm/FeeSettingForm";
 import { signUp } from "../../../store/auth/actions";
 import {
@@ -16,15 +16,24 @@ import {
 import { Input, useInputValidation } from "../../../hooks/useInputValidation";
 
 const SignUpForm = () => {
-  const { signUpError } = useSelector(
+  const navigate = useNavigate();
+
+  const { signUpError, signUpSuccess } = useSelector(
     (state: { auth: AuthStateType }) => state.auth
   );
   const dispatch = useDispatch<AppDispatch>();
 
+  useEffect(() => {
+    if (signUpSuccess) {
+      navigate(routes.signIn);
+      dispatch(resetSignupStore());
+    }
+  }, [signUpSuccess, navigate, dispatch]);
+
   // Resets error for better UX
   useEffect(() => {
     if (signUpError) {
-      dispatch(resetSignUpError());
+      dispatch(resetSignupStore());
     }
   }, [signUpError, dispatch]);
 
